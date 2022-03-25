@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "MVN_HOME"
+    }
+stages {
+        stage('preparation') {
+            steps {
+                git 'https://github.com/Akepati9/TestNGMaven_Simplilearnlogin.git'
+            }
+        }
+        stage('build') {
+            steps {
+                bat 'mvn clean test'
+                
+            }
+        }
+    }
+}
